@@ -1,0 +1,19 @@
+My build of tabbed by suckless.org
+The main purpose is being able to use tabs in zathura
+
+# Requirements
+To build tabbed you need the Xlib header files.
+
+# Patches
+- alpha
+- autohide
+- clientnumber
+- xft
+
+# Installation
+git clone https://github.com/hybryd0ng/tabbed
+cd tabbed
+sudo make install
+
+# Recompiling
+sudo make clean install

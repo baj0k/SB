@@ -1,0 +1,26 @@
+My build of st, the simple terminal by suckless.org based on Luke's build (https://github.com/LukeSmithxyz/st)
+
+# Custom bindings
+scrollback with alt-k/j or alt-PgUp/PgDn
+alt-shift-PgUp/PgDn to increase/decrease font size, alt-home returns to default
+alt-c to copy, alt-v to paste
+alt-l to follow urls
+alt-y to copy urls
+alt-o tp copy the output of commands from stdout
+
+# Patches applied
+- xresources
+- alpha
+- vertcenter
+- Scrollback
+- font2
+- selectioncolors
+- hidecursor
+
+# Installation
+git clone https://github.com/hybryd0ng/st
+cd st
+sudo make install
+
+# Recompilation
+sudo make clean install

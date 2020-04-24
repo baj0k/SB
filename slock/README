@@ -1,0 +1,21 @@
+My build of slock, the simple screen locker for X by suckless.org
+
+# Patches applied
+- dpms
+- message
+- mediakeys
+- quickcancel
+
+# Requirements
+Xlib header files
+
+# Installation
+git clone https://github.com/hybryd0ng/slock
+cd slock
+sudo make install
+
+# Recompilation
+sudo make clean install
+
+# Usage
+$ slock 
