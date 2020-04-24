@@ -10,8 +10,8 @@ My build of slock, the simple screen locker for X by suckless.org
 Xlib header files
 
 # Installation
-git clone https://github.com/hybryd0ng/slock
-cd slock
+git clone https://github.com/hybryd0ng/SB
+cd SB/slock
 sudo make install
 
 # Recompilation

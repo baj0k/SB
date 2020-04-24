@@ -18,8 +18,8 @@ alt-o tp copy the output of commands from stdout
 - hidecursor
 
 # Installation
-git clone https://github.com/hybryd0ng/st
-cd st
+git clone https://github.com/hybryd0ng/SB
+cd SB/st
 sudo make install
 
 # Recompilation

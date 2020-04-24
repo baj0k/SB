@@ -11,8 +11,8 @@ To build tabbed you need the Xlib header files.
 - xft
 
 # Installation
-git clone https://github.com/hybryd0ng/tabbed
-cd tabbed
+git clone https://github.com/hybryd0ng/SB
+cd SB/tabbed
 sudo make install
 
 # Recompiling

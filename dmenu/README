@@ -1,0 +1,15 @@
+My build of dmenu, the dynamic menu for X by suckless.org
+
+# Custom bindings
+- Yet another
+
+# Patches applied
+- highlight
+
+# Installation
+git clone https://github.com/hybryd0ng/SB
+cd SB/dmenu
+sudo make install
+
+# Recompilation
+sudo make clean install
