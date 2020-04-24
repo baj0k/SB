@@ -1,10 +1,8 @@
 My build of dmenu, the dynamic menu for X by suckless.org
 
-# Custom bindings
-- Yet another
-
 # Patches applied
 - highlight
+- prefix completion
 
 # Installation
 git clone https://github.com/hybryd0ng/SB
