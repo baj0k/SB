@@ -8,25 +8,26 @@ static int topbar = 1;
 static const char *fonts[] = {
 	"monospace:size=10"
 };
-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+
+/* -p  option; prompt to the left of input field */
+static const char *prompt      = NULL;
+
 static const char *colors[SchemeLast][2] = {
 	/* [Scheme] = { fg, bg }	      */
-	[SchemeNorm] = { "#bbbbbb", "#222222" },
-	[SchemeSel] = { "#eeeeee", "#005577" },
-	[SchemeSelHighlight] = { "#CA51BA", "#080010" },
-	[SchemeNormHighlight] = { "#AD7FA8", "#080010" },
+	[SchemeNorm] = { "#00FFFF", "#FFFFFF" },
+	[SchemeSel] = { "#00FFFF", "#FFFFFF" },
+	[SchemeSelHighlight] = { "#C4A000", "#3F0937" },
+	[SchemeNormHighlight] = { "#C4A000", "#080010" },
 	[SchemeOut] = { "#000000", "#000000" },
 };
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
-static unsigned int lines      = 0;
+static unsigned int lines      = 4;
 
-/*
- * Characters not considered part of a word while deleting words
- * for example: " /?\"&[]"
- */
+/* Characters not considered part of a word while deleting words f.e: " /?\"&[]" */
 static const char worddelimiters[] = " ";
 
-/*
- * Use prefix matching by default; can be inverted with the -x flag.
- */
-static int use_prefix = 1;
+/* Size of the window border */
+static const unsigned int border_width = 3;
+
+/* Use prefix matching by default; can be inverted with the -x flag */
+static int use_prefix = 0;

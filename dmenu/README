@@ -1,6 +1,8 @@
 My build of dmenu, the dynamic menu for X by suckless.org
 
 # Patches applied
+- border
+- center
 - highlight
 - prefix completion
 - xresources
