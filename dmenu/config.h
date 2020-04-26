@@ -27,7 +27,7 @@ static unsigned int lines      = 4;
 static const char worddelimiters[] = " ";
 
 /* Size of the window border */
-static const unsigned int border_width = 3;
+static const unsigned int border_width = 2;
 
 /* Use prefix matching by default; can be inverted with the -x flag */
 static int use_prefix = 0;

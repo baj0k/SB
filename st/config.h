@@ -217,8 +217,8 @@ MouseKey mkeys[] = {
 	{ Button5,              ShiftMask,      kscrolldown,    {.i =  1} },
 	{ Button4,              MODKEY,         kscrollup,      {.i =  1} },
 	{ Button5,              MODKEY,         kscrolldown,    {.i =  1} },
-	{ Button4,              TERMMOD,        zoom,           {.f =  +1} },
-	{ Button5,              TERMMOD,        zoom,           {.f =  -1} },
+	{ Button4,              TERMMOD,        zoom,           {.f = +1} },
+	{ Button5,              TERMMOD,        zoom,           {.f = -1} },
 };
 
 static char *openurlcmd[] = { "/bin/sh", "-c",
@@ -247,6 +247,7 @@ static Shortcut shortcuts[] = {
 	{ XK_ANY_MOD,		Button2,	selpaste,	{.i =  0} },
 	{ MODKEY,               XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_Control_L,   iso14755,       {.i =  0} },
+	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 	{ MODKEY,               XK_Page_Up,     kscrollup,      {.i = -1} },
