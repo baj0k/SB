@@ -9,6 +9,9 @@ static const char *fonts[] = {
 	"monospace:size=10"
 };
 
+static const unsigned int bgalpha = 0x90;
+static const unsigned int fgalpha = OPAQUE;
+
 /* -p  option; prompt to the left of input field */
 static const char *prompt      = NULL;
 
@@ -16,10 +19,17 @@ static const char *colors[SchemeLast][2] = {
 	/* [Scheme] = { fg, bg }	      */
 	[SchemeNorm] = { "#00FFFF", "#FFFFFF" },
 	[SchemeSel] = { "#00FFFF", "#FFFFFF" },
-	[SchemeSelHighlight] = { "#C4A000", "#3F0937" },
-	[SchemeNormHighlight] = { "#C4A000", "#080010" },
+	[SchemeSelHighlight] = { "#00CCCC", "#483C31" },
+	[SchemeNormHighlight] = { "#AD7FA8", "#000000" },
 	[SchemeOut] = { "#000000", "#000000" },
 };
+static const unsigned int alphas[SchemeLast][2] = {
+	/*		fgalpha		bgalphga	*/
+	[SchemeNorm] = { fgalpha, bgalpha },
+	[SchemeSel] = { fgalpha, bgalpha },
+	[SchemeOut] = { fgalpha, bgalpha },
+};
+
 /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
 static unsigned int lines      = 4;
 
