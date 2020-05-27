@@ -1,8 +1,9 @@
 Collection of my builds of some of the Suckless's minimalist softwares. 
-Checkout https://suckless.org/ and https://lukesmith.xyz/ - these guys are the big brain.
+For more information checkout https://suckless.org/ - these guys are the big brain.
 
 # Software included
 - dmenu
+- sent
 - slock
 - st
 - tabbed

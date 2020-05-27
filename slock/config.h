@@ -12,13 +12,13 @@ static const char *colorname[NUMCOLS] = {
 static const int failonclear = 0;
 
 /* default message */
-static const char * message = "XD";
+static const char * message = "BASSWORD :DDD";
 
 /* text color */
-static const char * text_color = "#555555";
+static const char * text_color = "#06666";
 
 /* text size (must be a valid size) */
-static const char * font_name = "-b&h-lucida-medium-r-normal-sans-24-240-75-75-p-136-iso8859-15";
+static const char * font_name = "lucidasans-18";
 
 /* time in seconds before the monitor shuts down */
 static const int monitortime = 15;

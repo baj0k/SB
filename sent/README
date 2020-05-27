@@ -1,0 +1,27 @@
+My build of sent, the simple plaintext presentation tool by suckless.org
+
+# Patches applied
+- progress bar
+- toggle cursor
+
+# Requirements
+- Xlib
+- Xft
+- farbfeld
+
+# Installation
+git clone https://github.com/baj0k/SB
+cd SB/sent
+sudo make install
+
+# Recompilation
+sudo make clean install
+
+# Usage
+$ sent [FILE]
+
+If FILE is omitted or equals `-`, stdin will be read.
+Each paragraph represents one slide.
+Paragraphs starting with `@` in front of the filename produce image slide
+Lines starting with `#` will be ignored
+You can escape '@' and '#' with `\`

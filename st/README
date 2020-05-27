@@ -20,7 +20,7 @@ alt-shift-return to spawn new terminal instance with the same CWD as the current
 - xresources
 
 # Installation
-git clone https://github.com/hybryd0ng/SB
+git clone https://github.com/baj0k/SB
 cd SB/st
 sudo make install
 

@@ -9,7 +9,7 @@ My build of dmenu, the dynamic menu for X by suckless.org
 - xresources
 
 # Installation
-git clone https://github.com/hybryd0ng/SB
+git clone https://github.com/baj0k/SB
 cd SB/dmenu
 sudo make install
 
