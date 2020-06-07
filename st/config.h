@@ -1,22 +1,19 @@
 /* See LICENSE file for copyright and license details. */
 
-/*
- * appearance
- *
- * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
- */
-static char *font = "mono:pixelsize=14:antialias=true:autohint=true";
-static char *font2[] = { "JoyPixels:pixelsize=10:antialias=true:autohint=true" };
-static int borderpx = 2;
+/* fonts */
+static char *font = " ";
+static char *font2[] = { " " };
 
-/*
- * What program is execed by st depends of these precedence rules:
+/* internal border width in px */
+static int borderpx = 0;
+
+/* What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
  * 2: utmp option
  * 3: SHELL environment variable
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
- */
+*/
 static char *shell = "/bin/sh";
 char *utmp = NULL;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
@@ -28,11 +25,7 @@ char *vtiden = "\033[?6c";
 static float cwscale = 1.0;
 static float chscale = 1.0;
 
-/*
- * word delimiter string
- *
- * More advanced example: L" `'\"()[]{}"
- */
+/* word delimiter string. More advanced example: L" `'\"()[]{}" */
 wchar_t *worddelimiters = L" ";
 
 /* selection timeouts (in milliseconds) */
@@ -46,49 +39,27 @@ int allowaltscreen = 1;
 static unsigned int xfps = 120;
 static unsigned int actionfps = 30;
 
-/*
- * blinking timeout (set to 0 to disable blinking) for the terminal blinking
- * attribute.
- */
+/* blinking timeout (0 to disable blinking) for the terminal blinking attribute */
 static unsigned int blinktimeout = 100;
 
-/*
- * thickness of underline and bar cursors
- */
+/* thickness of underline and bar cursors */
 static unsigned int cursorthickness = 2;
 
-/*
- * bell volume. It must be a value between -100 and 100. Use 0 for disabling
- * it
- */
+/* bell volume. Must be between -100 and 100. Use 0 to disable */
 static int bellvolume = 0;
 
 /* default TERM value */
 char *termname = "st-256color";
 
-/*
- * spaces per tab
- *
- * When you are changing this value, don't forget to adapt the »it« value in
- * the st.info and appropriately install the st.info in the environment where
- * you use this st version.
- *
- *	it#$tabspaces,
- *
- * Secondly make sure your kernel is not expanding tabs. When running `stty
- * -a` »tab0« should appear. You can tell the terminal to not expand tabs by
- *  running following command:
- *
- *	stty tabs
- */
+/* spaces per tab */
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.92;
+float alpha = 0;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	"#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#1D2021",
 	"#cc241d",
 	"#98971a",
 	"#d79921",
@@ -105,65 +76,54 @@ static const char *colorname[] = {
 	"#8ec07c",
 	"#ebdbb2",
 	[255] = 0,
-	/* more colors can be added after 255 to use with DefaultXX */
+	/* more colors can be added after 255 */
 	"#cccccc", /* 256 -> cursor */
 	"#555555", /* 257 -> rev cursor*/
 	"#2e3440", /* 258 -> bg */
 	"#ebdbb2", /* 259 -> fg */
+	"#2e3440", /* 260 -> selbg */
+	"#ebdbb2", /* 261 -> selfg */
 };
 
+/* cursor, reverse cursor colors */
+static unsigned int defaultcs  = 256;
+static unsigned int defaultrcs = 257;
 
-/*
- * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
- */
+/* fg, bg colors */
 unsigned int defaultfg = 259;
 unsigned int defaultbg = 258;
-static unsigned int defaultcs = 14;
-static unsigned int defaultrcs = 13;
 
-/* Colors used for selection */
-unsigned int selectionbg = 235;
-unsigned int selectionfg = 13;
-/* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
-/* Else if 1 keep original foreground-color of each cell => more colors :) */
+/* selection colors */
+unsigned int selectionbg = 260;
+unsigned int selectionfg = 261;
+
+/* non zero value keeps original fg color of each cell */
 static int ignoreselfg = 0;
 
-/*
- * Default shape of cursor
+/* Default shape of cursor
  * 2: Block ("█")
  * 4: Underline ("_")
  * 6: Bar ("|")
  * 7: Snowman ("☃")
- */
+*/
 static unsigned int cursorshape = 4;
 
-/*
- * Default columns and rows numbers
- */
-
+/* Default columns and rows numbers */
 static unsigned int cols = 80;
 static unsigned int rows = 24;
 
-/*
- * Default colour and shape of the mouse cursor
- */
+/* Default colour and shape of the mouse cursor */
 static unsigned int mouseshape = XC_xterm;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
 
-/*
- * Color used to display font attributes when fontconfig selected a font which
- * doesn't match the ones requested.
- */
+/* Color for font attributes when fontconfig selects font that doesn't match the ones requested */
 static unsigned int defaultattr = 11;
 
-/*
- * Xresources preferences to load at startup
- */
+/* Xresources preferences to load at startup */
 ResourcePref resources[] = {
 		{ "font",         STRING,  &font },
-		{ "fontalt0",     STRING,  &font2[0] },
+		{ "fontalt",      STRING,  &font2[0] },
 		{ "color0",       STRING,  &colorname[0] },
 		{ "color1",       STRING,  &colorname[1] },
 		{ "color2",       STRING,  &colorname[2] },
@@ -180,27 +140,21 @@ ResourcePref resources[] = {
 		{ "color13",      STRING,  &colorname[13] },
 		{ "color14",      STRING,  &colorname[14] },
 		{ "color15",      STRING,  &colorname[15] },
+		{ "cursorColor",  STRING,  &colorname[256] },
+		{ "rcursorColor", STRING,  &colorname[257] },
+		{ "cursorShape",  INTEGER, &cursorshape },
 		{ "background",   STRING,  &colorname[258] },
 		{ "foreground",   STRING,  &colorname[259] },
-		{ "cursorColor",  STRING,  &colorname[256] },
+		{ "selbg",	  STRING,  &colorname[260] },
+		{ "selfg",	  STRING,  &colorname[261] },
 		{ "termname",     STRING,  &termname },
-		{ "shell",        STRING,  &shell },
-		{ "xfps",         INTEGER, &xfps },
-		{ "actionfps",    INTEGER, &actionfps },
 		{ "blinktimeout", INTEGER, &blinktimeout },
-		{ "bellvolume",   INTEGER, &bellvolume },
 		{ "tabspaces",    INTEGER, &tabspaces },
 		{ "borderpx",     INTEGER, &borderpx },
-		{ "cursorShape",  INTEGER, &cursorshape },
-		{ "cwscale",      FLOAT,   &cwscale },
-		{ "chscale",      FLOAT,   &chscale },
 		{ "alpha",        FLOAT,   &alpha },
 };
 
-/*
- * Internal mouse shortcuts.
- * Beware that overloading Button1 will disable the selection.
- */
+/* Internal mouse shortcuts */
 static MouseShortcut mshortcuts[] = {
 	/* button               mask            string */
 	{ Button4,              XK_NO_MOD,      "\031" },
@@ -226,6 +180,8 @@ static char *openurlcmd[] = { "/bin/sh", "-c", "sed 's/.*│//g' | tr -d '\n' | 
 static char *copyurlcmd[] = { "/bin/sh", "-c", "sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?$#=_-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | dmenu -i -p 'Copy which url?' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL };
 
 static char *copyoutput[] = { "/bin/sh", "-c", "st-copyout", "externalpipe", NULL };
+
+static char *lockscreen[] = { "/bin/sh", "-c", "slock", "externalpipe", NULL };
 
 static Shortcut shortcuts[] = {
 	/* mask                 keysym          function        argument */
@@ -263,6 +219,7 @@ static Shortcut shortcuts[] = {
 	{ MODKEY,               XK_l,           externalpipe,   {.v = openurlcmd } },
 	{ MODKEY,               XK_y,           externalpipe,   {.v = copyurlcmd } },
 	{ MODKEY,               XK_o,           externalpipe,   {.v = copyoutput } },
+	{ MODKEY,               XK_x,           externalpipe,   {.v = lockscreen } },
 };
 
 /*
