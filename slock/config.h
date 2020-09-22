@@ -12,7 +12,7 @@ static const char *colorname[NUMCOLS] = {
 static const int failonclear = 0;
 
 /* default message */
-static const char * message = "BASSWORD :DDD";
+static const char * message = "ENDER BASSWORD :DDDDDDDD";
 
 /* text color */
 static const char * text_color = "#06666";
