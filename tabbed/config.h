@@ -2,16 +2,16 @@
 
 /* appearance */
 static const char font[]        = "monospace:size=9";
-static const char* normbgcolor  = "#222222";
-static const char* normfgcolor  = "#cccccc";
-static const char* selbgcolor   = "#555555";
-static const char* selfgcolor   = "#ffffff";
+static const char* normbgcolor  = "#212121";
+static const char* normfgcolor  = "#00cccc";
+static const char* selbgcolor   = "#111111";
+static const char* selfgcolor   = "#CCCCCC";
 static const char* urgbgcolor   = "#111111";
 static const char* urgfgcolor   = "#cc0000";
 static const char before[]      = "<";
 static const char after[]       = ">";
 static const char titletrim[]   = "...";
-static const int  tabwidth      = 200;
+static const int  tabwidth      = 150;
 static const Bool foreground    = True;
 static       Bool urgentswitch  = False;
 
